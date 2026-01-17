@@ -1,0 +1,1 @@
+/home/zhanh0f/work/data_new/seismic_data/FWI_result/v_fwi_29.npy

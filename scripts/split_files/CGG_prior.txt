@@ -1,0 +1,1 @@
+/home/zhanh0f/work/data_new/CGG_prior/CGG/CGG_prior_dist.npy
