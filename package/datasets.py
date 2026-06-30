@@ -27,30 +27,30 @@ class Dataset(Dataset):
     def load_every(self, batch):
     
         batch = batch.split('\t')
-        label_path = batch[0]  
+        label_path = batch[0]
+          
         print(label_path)
 
         label = np.load(label_path)
         label = label.astype('float32')
        
         return label
+
+
+    
  
     def __getitem__(self, idx):
-    
-          
-        batch_idx, sample_idx = idx // self.file_size, idx % self.file_size
+        batch_idx = idx // self.file_size
 
-        label = np.copy(self.label_list[batch_idx][sample_idx,:,:]) if len(self.label_list) != 0 else None
+        label = np.copy(self.label_list[batch_idx][::2, ::2]).astype(np.float32)
 
 
+        label = 2 * (label - 1000) / 4000 - 1
 
-        label = 2 * (label - 1478.6156) / (3587.2795  - 1478.6156) - 1
-        label = label[:,:608]
-
-        label = label[::2,::2]
-        label = label.T
-            
-        return label[None,:,:],label[None,:,:]
+        label = label[None, None, :320,275+304*0:275+304*2]
+        print(np.copy(self.label_list[batch_idx][:, ::1]).astype(np.float32).shape, print(label.shape))
+        return label
+      
     def __len__(self):
      
         return len(self.batch) * self.file_size

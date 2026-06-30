@@ -1,42 +1,54 @@
-![LOGO](asset/latent_update.png)
+![LOGO](asset/seg_postfwi_all.png)
+![LOGO](asset/postfwi_workflow.png)
 
-Reproducible material for **DW0125 : Optimizing Latent Variables in a Flow Matching Generation Process for Seismic Processing  - Hao Zhang., Shijun Cheng, Tariq Alkhalifah.**
+Reproducible material for ** Post-FWI Injection of Learned Priors Using a Flow Matching Model **
 
-[Click here](https://kaust.sharepoint.com/:f:/r/sites/M365_Deepwave_Documents/Shared%20Documents/Restricted%20Area/REPORTS/DW0125?csf=1&web=1&e=CG7MTU) to access the Project Report. Authentication to the _Restricted Area_ filespace is required.
+
 
 # Project structure
 This repository is organized as follows:
 
-* :open_file_folder: **package**: python library containing routines for ....;
-* :open_file_folder: **asset**: folder containing logo;
-* :open_file_folder: **data**: folder containing data (or instructions on how to retrieve the data
-* :open_file_folder: **notebooks**: set of jupyter notebooks reproducing the experiments in the paper (see below for more details);
-* :open_file_folder: **scripts**: set of python scripts used to run multiple experiments ...
+* 📁 **package**: Core Python modules implementing the U-Net architecture and Flow Matching framework.
+
+* 📁 **asset**: Project-related visual assets, including logos and illustrative figures.
+
+* 📁 **data**: Viking dataset, containing a FWI result.
+
+* 📁 **notebooks**: Jupyter notebooks for reproducing the otway experiment presented in this work.
+
+
 
 ## Notebooks
 The following notebooks are provided:
 
-- :orange_book: ``X1.ipynb``: notebook performing ...;
-- :orange_book: ``X2.ipynb``: notebook performing ...
+- :orange_book: ``Example_viking.ipynb``: notebook performing prior injection test on Viking Dataset;
+
+## Trained Model
+Download the pretrained model from the provided link: [Google Drive](https://drive.google.com/file/d/1m3DJkpKzpGhPKJtvKe5w7F1XgyQCL9wh/view?usp=drive_link&utm_source=chatgpt.com). Place the downloaded file in the `notebooks/checkpoints/` directory.
 
 
-## Getting started :space_invader: :robot:
-To ensure reproducibility of the results, we suggest using the `environment.yml` file when creating an environment.
+## Getting Started :space_invader: :robot:
 
-Simply run:
-```
+To ensure reproducibility, we recommend creating the environment using the provided `environment.yml` file.
+
+Run the following command:
+
+```bash
 ./install_env.sh
 ```
-It will take some time, if at the end you see the word `Done!` on your terminal you are ready to go. 
 
-Remember to always activate the environment by typing:
-```
-conda activate my_env
-```
+The installation may take a few minutes. After installation, run.
 
-**Disclaimer:** All experiments have been carried on a Intel(R) Xeon(R) CPU @ 2.10GHz equipped with a single NVIDIA GEForce RTX 3090 GPU. Different environment 
+Activate the environment using:
+
+```bash
+conda activate postFWI
+``
+
+You can start testing by running the notebook in the `./notebooks/` directory:
+
+
+
+
+**Disclaimer:** All experiments have been carried on a Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz equipped with a single NVIDIA RTX A6000 GPU. Different environment 
 configurations may be required for different combinations of workstation and GPU.
-
-## Cite us 
-DWXXX - Author1 et al. (2022) Report title.
-
