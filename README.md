@@ -43,7 +43,7 @@ Activate the environment using:
 
 ```bash
 conda activate postFWI
-``
+```
 
 You can start testing by running the notebook in the `./notebooks/` directory:
 
