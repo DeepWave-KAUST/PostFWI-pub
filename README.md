@@ -2,6 +2,7 @@
 ![LOGO](asset/postfwi_workflow.png)
 
 Reproducible material for ** Post-FWI Injection of Learned Priors Using a Flow Matching Model **
+The article has been submited to Journal and the preprint article can found at  [Post-FWI Injection of Learned Priors Using a Flow Matching Model](https://arxiv.org/abs/2607.23719)
 
 
 
