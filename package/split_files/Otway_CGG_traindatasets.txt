@@ -1,0 +1,2 @@
+../data/Training_dataset/CGG_randy_layered.npy	../data/Training_dataset/cgg_class.npy
+../data/Training_dataset/otway_all_resized.npy	../data/Training_dataset/otway_class.npy

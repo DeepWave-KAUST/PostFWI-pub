@@ -18,39 +18,46 @@ class Dataset(Dataset):
         
         if preload: 
             self.label_list = []
+            self.data_list = []
             for batch in self.batch:
-                label = self.load_every(batch)       
+                label,data = self.load_every(batch)       
+
                 if label is not None:
                     self.label_list.append(label)
-        
+                if data is not None:
+                    self.data_list.append(data)       
 
     def load_every(self, batch):
     
         batch = batch.split('\t')
-        label_path = batch[0]
-          
-        print(label_path)
+   
+        label_path = batch[0].strip()
+        data_path = batch[1].strip()
+   
 
-        label = np.load(label_path)
-        label = label.astype('float32')
-       
-        return label
-
-
+        label = np.load(label_path).astype('float32')
+        data = np.load(data_path)
+        
+        return label,data
+    
+    def __getitem__(self, idx):
     
  
-    def __getitem__(self, idx):
-        batch_idx = idx // self.file_size
+          
+        batch_idx, sample_idx = idx // self.file_size, idx % self.file_size
 
-        label = np.copy(self.label_list[batch_idx][::2, ::2]).astype(np.float32)
+        label = np.copy(self.label_list[batch_idx][sample_idx,:,:]) if len(self.label_list) != 0 else None
+        
+        data = np.copy(self.data_list[batch_idx][sample_idx,:]) if len(self.data_list) != 0 else None
+        label = 2 * (label - 1000) / (5000-1000) - 1
 
+        if np.random.randint(0, 2) == 1:
+            label = np.copy(np.flip(label, axis=1))
+            
 
-        label = 2 * (label - 1000) / 4000 - 1
+        return label[None,...], data
 
-        label = label[None, None, :320,275+304*0:275+304*2]
-        print(np.copy(self.label_list[batch_idx][:, ::1]).astype(np.float32).shape, print(label.shape))
-        return label
-      
+    
     def __len__(self):
      
         return len(self.batch) * self.file_size
