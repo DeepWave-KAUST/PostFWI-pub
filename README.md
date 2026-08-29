@@ -13,7 +13,7 @@ This repository is organized as follows:
 
 * 📁 **asset**: Project-related visual assets, including logos and illustrative figures.
 
-* 📁 **data**: Viking dataset, containing a FWI result.
+* 📁 **data**: Viking dataset, containing a FWI result and well logs.
 
 * 📁 **notebooks**: Jupyter notebooks for reproducing the otway experiment presented in this work.
 
